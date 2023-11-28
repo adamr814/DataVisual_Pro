@@ -23,8 +23,8 @@ namespace DataVisual_Pro
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Visibility = Visibility.Hidden;
             ((App)Application.Current).ShowLoginWindow();
-        }
+        }        
     }
 }

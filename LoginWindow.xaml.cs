@@ -19,6 +19,17 @@ namespace DataVisual_Pro
     /// </summary>
     public partial class LoginWindow : Window
     {
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if (this.DialogResult == true )
+            {
+                if (App.MainWindow != null)
+                {
+                    App.MainWindow.Visibility = Visibility.Visible;
+                }
+            }
+        }
         private List<User> users = new List<User>
         {
             new User {Username = "admin", Password = "admin123" },
@@ -28,7 +39,7 @@ namespace DataVisual_Pro
     
         public LoginWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -40,9 +51,11 @@ namespace DataVisual_Pro
             if (ValidateCredentials(enteredUsername, enteredPassword))
             {
                 DialogResult = true;
-                Close();
             }
-            //show message here if it does not work on the app.xaml.cs
+            else
+            {
+                MessageBox.Show("Login failed. Please Try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private bool ValidateCredentials(string username, string password)
