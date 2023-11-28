@@ -9,6 +9,30 @@ namespace DataVisual_Pro
     /// </summary>
     public partial class App : Application
     {
-    }
+        internal void ShowLoginWindow()
+        {
+            while (true)
+            {
+                var loginWindow = new LoginWindow();
+                if (loginWindow.ShowDialog() == true)
+                {
+                    var mainWindow = new MainWindow();
+                    mainWindow.Show();
 
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Login failed. Please Try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+        
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            ShowLoginWindow();            
+        }
+    }
 }

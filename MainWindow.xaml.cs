@@ -20,5 +20,11 @@ namespace DataVisual_Pro
         {
             InitializeComponent();
         }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            ((App)Application.Current).ShowLoginWindow();
+        }
     }
 }
