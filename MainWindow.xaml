@@ -3,12 +3,144 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:DataVisual_Pro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DataVisual Pro 0.4.3 - Main Window" Height="540" Width="930" Background="#FF84ADDA" FontFamily="Cascadia Mono Light">
     <Grid>
         <Grid>
-            <Button Content="Logout" HorizontalAlignment="Left" Margin="358,226,0,0" VerticalAlignment="Top" Click="LogoutButton_Click"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="247*"/>
+            </Grid.RowDefinitions>
+            <TabControl Margin="10,10,10,0" Grid.RowSpan="2">
+                <TabItem Header="Summary">
+                    <Grid Background="#FFE5E5E5">
+                        <TabControl>
+                            <TabItem Header="Admission Info">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-5,-5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="54*"/>
+                                        <RowDefinition Height="54*"/>
+                                        <RowDefinition Height="54*"/>
+                                        <RowDefinition Height="54*"/>
+                                        <RowDefinition Height="247*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBox x:Name="_FirstNameBox" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Width="120" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <TextBox x:Name="_MiddleInitialBox" HorizontalAlignment="Left" Margin="141,0,0,10" TextWrapping="Wrap" Width="35" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <TextBox x:Name="_LastNameBox" HorizontalAlignment="Left" Margin="187,0,0,10" TextWrapping="Wrap" Width="120" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,0,0,33" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Bottom" Height="16" Width="60" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="141,0,0,33" TextWrapping="Wrap" Text="M.I" Width="26" RenderTransformOrigin="0.588,0.174" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1" Height="16" VerticalAlignment="Bottom"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="187,0,0,33" TextWrapping="Wrap" Text="Last Name" Width="56" Height="16" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,0,0,33" TextWrapping="Wrap" Text="MRN" VerticalAlignment="Bottom" Height="16" Width="60" FontFamily="Cascadia Mono Light" FontSize="14"/>
+                                    <TextBox x:Name="_MRNBox" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Width="120" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="348,0,0,34" TextWrapping="Wrap" Text="DOB" VerticalAlignment="Bottom" Height="15" Width="60" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <DatePicker x:Name="_birthDatePicker" SelectedDate="{Binding PatientBirthDate}" DisplayDateEnd="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left" Margin="348,0,0,8" Grid.Row="1" Width="102" Height="23" VerticalAlignment="Bottom"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,0,0,33" TextWrapping="Wrap" Text="Sex" VerticalAlignment="Bottom" Height="16" Width="60" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2"/>
+                                    <RadioButton x:Name="_ButtonMale" GroupName="Group1" Content="Male" HorizontalAlignment="Left" Margin="10,0,0,10" Grid.Row="2" Height="15" VerticalAlignment="Bottom"/>
+                                    <RadioButton x:Name="_ButtonFemale" GroupName="Group1" Content="Female" HorizontalAlignment="Left" Margin="62,0,0,10" Grid.Row="2" Height="15" VerticalAlignment="Bottom"/>
+                                    <RadioButton x:Name="_ButtonNotSpecified" GroupName="Group1" Content="Not Specified" HorizontalAlignment="Left" Margin="128,0,0,10" Grid.Row="2" Height="15" VerticalAlignment="Bottom" IsChecked="True"/>
+                                    <TextBox x:Name="_AgeBox" HorizontalAlignment="Left" Margin="462,0,0,10" TextWrapping="Wrap" Width="54" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1" IsReadOnly="True"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="462,0,0,33" TextWrapping="Wrap" Text="Age" VerticalAlignment="Bottom" Height="16" Width="60" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <TextBox x:Name="_HeightBox" HorizontalAlignment="Left" Margin="253,0,0,10" TextWrapping="Wrap" Width="120" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2"/>
+                                    <TextBox x:Name="_WeightBox" HorizontalAlignment="Left" Margin="444,0,0,10" TextWrapping="Wrap" Width="120" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2"/>
+                                    <ComboBox HorizontalAlignment="Left" Margin="378,0,0,9" Grid.Row="2" Width="50" Height="22" VerticalAlignment="Bottom" SelectedIndex="0">
+                                        <ComboBoxItem Content="in"/>
+                                        <ComboBoxItem Content="cm"/>
+                                    </ComboBox>
+                                    <ComboBox HorizontalAlignment="Left" Margin="569,0,0,9" Grid.Row="2" Width="50" Height="22" VerticalAlignment="Bottom" SelectedIndex="0">
+                                        <ComboBoxItem Content="lb"/>
+                                        <ComboBoxItem Content="kg"/>
+                                    </ComboBox>
+                                    <TextBlock HorizontalAlignment="Left" Margin="253,0,0,33" TextWrapping="Wrap" Text="Height" VerticalAlignment="Bottom" Height="16" Width="60" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="444,0,0,33" TextWrapping="Wrap" Text="Weight" VerticalAlignment="Bottom" Height="16" Width="60" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,0,0,33" TextWrapping="Wrap" Text="Provider" VerticalAlignment="Bottom" Height="16" Width="71" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3"/>
+                                    <TextBox x:Name="_FirstNameBox_Copy" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Width="120" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="154,0,0,33" TextWrapping="Wrap" Text="Diagnosis" VerticalAlignment="Bottom" Height="16" Width="83" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3"/>
+                                    <TextBox x:Name="_FirstNameBox_Copy1" HorizontalAlignment="Left" Margin="154,0,0,10" TextWrapping="Wrap" Width="190" Height="20" VerticalAlignment="Bottom" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3"/>
+                                    <Button Content="Button" HorizontalAlignment="Left" Margin="141,0,0,11" VerticalAlignment="Bottom" Width="74" Click="Button_Click"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="History">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Reports">
+                    <Grid Background="#FFE5E5E5">
+                        <TabControl>
+                            <TabItem Header="Labs">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="Diagnostics">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                            <TabItem Header="Radiology">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="MAR">
+                    <Grid Background="#FFE5E5E5">
+                        <TabControl>
+                            <TabItem Header="Scheduled">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="PRN">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                            <TabItem Header="Continous">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Flowsheets">
+                    <Grid Background="#FFE5E5E5">
+                        <TabControl>
+                            <TabItem Header="Vital Signs">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="Intake and Output">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                            <TabItem Header="Assessment">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="IV's/Lines/Drains/Tubes">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="Braden Scale">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="NIHSS">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="CIWA">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                            <TabItem Header="Falls Risk">
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Notes">
+                    <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                </TabItem>
+                <TabItem Header="Orders">
+                    <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                </TabItem>
+                <TabItem Header="Education">
+                    <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                </TabItem>
+                <TabItem Header="Care Plan">
+                    <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                </TabItem>
+            </TabControl>
+            <Button Content="Logout" Margin="860,0,10,0" VerticalAlignment="Center" Click="LogoutButton_Click" Height="20"/>
         </Grid>
     </Grid>
 </Window>

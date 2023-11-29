@@ -25,6 +25,11 @@ namespace DataVisual_Pro
         {
             Visibility = Visibility.Hidden;
             ((App)Application.Current).ShowLoginWindow();
-        }        
+        }
+
+        private void MRNButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
