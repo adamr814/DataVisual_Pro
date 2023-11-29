@@ -18,7 +18,7 @@ namespace DataVisual_Pro
     public partial class MainWindow : Window
     {
         private JsonDataManager _dataManager = new JsonDataManager();
-        private List<Patient> patients;
+        private Patient currentPatient;
 
         public MainWindow()
         {
@@ -26,14 +26,17 @@ namespace DataVisual_Pro
             _dataManager = new JsonDataManager();
         }
 
-        private void InitalizeData()
+        /*private void InitalizeData()
         {
             patients = _dataManager.LoadPatientData();
-        }
+        }*/
 
         private void SaveData()
         {
-            _dataManager.SavePatientData(patients);
+            if (currentPatient != null)
+            {
+                _dataManager.SavePatientData(currentPatient);
+            }
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
@@ -47,38 +50,46 @@ namespace DataVisual_Pro
             SaveData();
         }
 
-        private void MRNSubmitButton_Click(object sender, RoutedEventArgs e)
+        private void MRNLoadButton_Click(object sender, RoutedEventArgs e)
         {
             string enteredMRN = _MRNBox.Text;
-            Patient existingPatient = patients.FirstOrDefault(p =>p.MRN == enteredMRN);
+            Patient existingPatient = _dataManager.LoadPatientData(enteredMRN);
 
             if (existingPatient != null)
             {
+                currentPatient = existingPatient;
                 ShowPatientFoundMessage();
             }
             else
             {
                 if (MessageBox.Show("Patient not found. Do you want to initialize a new patient?", "Initilization", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    InitializeNewPatient();
+                    InitializeNewPatient(enteredMRN);
                 }
             }
         }
 
         private void ShowPatientFoundMessage()
-        {
+        {            
             _patientFoundTextBlock.Visibility = Visibility.Visible;
             Task.Delay(3000).ContinueWith(_ =>
             {
                Dispatcher.Invoke(() => _patientFoundTextBlock.Visibility = Visibility.Collapsed);
             }, TaskScheduler.FromCurrentSynchronizationContext() );
         }
-
-        private void InitializeNewPatient()
+        private void ShowPatientInitMessage()
         {
-            _patientFoundTextBlock.Text = "Patient Initialized";
-            ShowPatientFoundMessage();
-            SaveData();
+            _patientInitTextBlock.Visibility = Visibility.Visible;
+            Task.Delay(3000).ContinueWith(_ =>
+            {
+                Dispatcher.Invoke(() => _patientInitTextBlock.Visibility = Visibility.Collapsed);
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void InitializeNewPatient(string mrn)
+        {
+            JsonDataManager.InitializePatientData(mrn);
+            ShowPatientInitMessage();
         }
 
         private void CheckBox1_Checked(object sender, RoutedEventArgs e)

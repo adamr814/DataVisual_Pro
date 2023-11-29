@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataVisual_Pro"
         mc:Ignorable="d"
-        Title="DataVisual Pro 0.4.5 - Login Window" Height="300" Width="430" ResizeMode="NoResize" FontFamily="Cascadia Mono Light">
+        Title="DataVisual Pro 0.4.6 - Login Window" Height="300" Width="430" ResizeMode="NoResize" FontFamily="Cascadia Mono Light">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
