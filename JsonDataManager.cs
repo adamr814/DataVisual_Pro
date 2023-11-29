@@ -23,11 +23,39 @@ namespace DataVisual_Pro
         }
         public void SavePatientData(Patient patient)
         {
+            string filePath = Path.Combine(dataDirectory, $"{patient.MRN}.json");
+
             try
             {
-                string filePath = Path.Combine(dataDirectory, $"{patient.MRN}.json");
+                string jsonData;
 
-                string jsonData = JsonConvert.SerializeObject(patient, Formatting.Indented);
+                if (File.Exists(filePath))
+                {
+                    jsonData = File.ReadAllText(filePath);
+                    var existingData = JsonConvert.DeserializeObject<Patient>(jsonData);
+                    
+                    existingData.FirstName = patient.FirstName;
+                    existingData.LastName = patient.LastName;
+                    existingData.BirthDate = patient.BirthDate;
+                    existingData.Allergies = patient.Allergies;
+                    existingData.Diagnosis = patient.Diagnosis;
+                    existingData.CodeStatus = patient.CodeStatus;
+                    existingData.Height = patient.Height;
+                    existingData.Weight = patient.Weight;
+                    existingData.Sex = patient.Sex;
+                    existingData.MiddleInitial = patient.MiddleInitial;
+                    existingData.CurrentIllnessHistory = patient.CurrentIllnessHistory;
+                    existingData.IsolationStatus = patient.IsolationStatus;
+                    existingData.FamilyHealthHistory = patient.FamilyHealthHistory;
+                    existingData.MedicalHistory = patient.MedicalHistory;
+                    existingData.SurgicalHistory = patient.SurgicalHistory;
+
+                    jsonData = JsonConvert.SerializeObject(existingData, Formatting.Indented);
+                }
+                else
+                {
+                    jsonData = JsonConvert.SerializeObject(patient, Formatting.Indented);
+                }                
                 File.WriteAllText(filePath, jsonData);
             }
             catch (Exception ex)

@@ -6,7 +6,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:DataVisual_Pro"
         mc:Ignorable="d"
-        Title="DataVisual Pro 0.4.6 - Main Window" Height="540" Width="930" Background="#FF84ADDA" FontFamily="Cascadia Mono Light">
+        Title="DataVisual Pro 0.4.7 - Main Window" Height="540" Width="930" Background="#FF84ADDA" FontFamily="Cascadia Mono Light">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -73,8 +73,8 @@
                                     <CheckBox x:Name="_CheckBox5" Content="Airborne Precautions" HorizontalAlignment="Left" Margin="10,69,0,0" Grid.Row="6" Checked="CheckBox5_Checked" Height="15" VerticalAlignment="Top"/>
                                     <CheckBox x:Name="_CheckBox6" Content="Droplet Precautions" HorizontalAlignment="Left" Margin="10,89,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="CheckBox6_Checked"/>
                                     <CheckBox x:Name="_CheckBox7" Content="Standard Precautions" HorizontalAlignment="Left" Margin="10,29,0,0" Grid.Row="6" VerticalAlignment="Top" Checked="CheckBox7_Checked"/>
-                                    <TextBlock x:Name="_patientFoundTextBlock" HorizontalAlignment="Left" Margin="228,0,0,13" TextWrapping="Wrap" Text=" Patient File Load/Save Successful " VerticalAlignment="Bottom" Background="#FFC1F9E3" Foreground="#FF06772C" Visibility="Collapsed"/>
-                                    <TextBlock x:Name="_patientInitTextBlock" HorizontalAlignment="Left" Margin="228,0,0,13" TextWrapping="Wrap" Text=" Patient File Initialized " VerticalAlignment="Bottom" Background="#FFC1F9E3" Foreground="#FF06772C" Visibility="Collapsed"/>
+                                    <TextBlock x:Name="_patientFoundTextBlock" HorizontalAlignment="Left" Margin="313,0,0,13" TextWrapping="Wrap" Text=" Patient File Load/Save Successful " VerticalAlignment="Bottom" Background="#FFC1F9E3" Foreground="#FF06772C" Visibility="Collapsed"/>
+                                    <TextBlock x:Name="_patientInitTextBlock" HorizontalAlignment="Left" Margin="313,0,0,13" TextWrapping="Wrap" Text=" Patient File Initialized " VerticalAlignment="Bottom" Background="#FFC1F9E3" Foreground="#FF06772C" Visibility="Collapsed"/>
                                 </Grid>
                             </TabItem>
                             <TabItem Header="History">

@@ -33,12 +33,90 @@ namespace DataVisual_Pro
 
         private void SaveData()
         {
-            if (currentPatient != null)
+            Patient patient = new Patient
             {
-                _dataManager.SavePatientData(currentPatient);
-            }
+                FirstName = _FirstNameBox.Text,
+                LastName = _LastNameBox.Text,
+                MiddleInitial = _MiddleInitialBox.Text,
+                BirthDate = _birthDatePicker.Text,
+                Sex = GetSelectedSex(),
+                Height = _HeightBox.Text,
+                Weight = _WeightBox.Text,
+                Provider = _ProviderBox.Text,
+                Allergies = _AllergiesBox.Text,
+                CodeStatus = GetSelectedCode(),
+                IsolationStatus = GetSelectedIsolation(),
+
+            };
+            _dataManager.SavePatientData(patient);
+            
         }
 
+        private string GetSelectedIsolation()
+        {            
+            if (_CheckBox7.IsChecked == true)
+            {
+                return "Standard";
+            }
+            else if (_CheckBox4.IsChecked == true && _CheckBox5.IsChecked == true && _CheckBox6.IsChecked == true)
+            {
+                return "Contact/Airborne/Droplet";
+            }
+            else if (_CheckBox4.IsChecked == true)
+            {
+                return "Contact";
+            }
+            else if ( _CheckBox5.IsChecked == true)
+            {
+                return "Airborne";
+            }
+            else if (_CheckBox6.IsChecked == true)
+            {
+                return "Droplet";
+            }
+            else
+            {
+                return "Standard";
+            }        
+        }
+        private string GetSelectedCode()
+        {
+            if (_CheckBox1.IsChecked == true)
+            {
+                return "Full";
+            }
+            else if (_CheckBox2.IsChecked == true && _CheckBox3.IsChecked == true)
+            {
+                return "DNR/DNI";
+            }
+            else if (_CheckBox2.IsChecked == true)
+            {
+                return "DNR";
+            }
+            else if ( _CheckBox3.IsChecked == true)
+            {
+                return "DNI";
+            }
+            else
+            {
+                return "None";
+            }
+        }
+        private string GetSelectedSex()
+        {
+            if (_ButtonMale.IsChecked == true)
+            {
+                return "Male";
+            }
+            else if(_ButtonFemale.IsChecked == true)
+            {
+                return "Female";
+            }           
+            else
+            {
+                return "Not Specified";
+            }
+        }
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
@@ -67,6 +145,12 @@ namespace DataVisual_Pro
                     InitializeNewPatient(enteredMRN);
                 }
             }
+        }
+
+        private void MRNSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            _dataManager.SavePatientData(currentPatient);
+            ShowPatientFoundMessage();
         }
 
         private void ShowPatientFoundMessage()
