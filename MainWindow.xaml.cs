@@ -27,9 +27,62 @@ namespace DataVisual_Pro
             ((App)Application.Current).ShowLoginWindow();
         }
 
-        private void MRNButton_Click(object sender, RoutedEventArgs e)
+        private void MRNSubmitButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void CheckBox1_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_CheckBox1.IsChecked == true)
+            {
+                _CheckBox2.IsChecked = false;
+                _CheckBox3.IsChecked = false;
+            }
+        }
+        private void CheckBox2_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_CheckBox2.IsChecked == true)
+            {
+                _CheckBox1.IsChecked = false;
+            }
+        }
+        private void CheckBox3_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_CheckBox3.IsChecked == true)
+            {
+                _CheckBox1.IsChecked= false;
+            }
+        }
+        private void CheckBox4_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_CheckBox4.IsChecked == true)
+            {
+                _CheckBox7.IsChecked = false;
+            }
+        }
+        private void CheckBox5_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_CheckBox5.IsChecked == true)
+            {
+                _CheckBox7.IsChecked = false;
+            }
+        }
+        private void CheckBox6_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_CheckBox6.IsChecked == true)
+            {
+                _CheckBox7.IsChecked = false;
+            }
+        }
+        private void CheckBox7_Checked(object sender, RoutedEventArgs e) //this is the standard isolation button
+        {
+            if (_CheckBox7.IsChecked == true)
+            {
+                _CheckBox4.IsChecked = false;
+                _CheckBox5.IsChecked = false;
+                _CheckBox6.IsChecked = false;
+            }
         }
     }
 }
