@@ -6,7 +6,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:DataVisual_Pro"
         mc:Ignorable="d"
-        Title="DataVisual Pro 0.4.7 - Main Window" Height="540" Width="930" Background="#FF84ADDA" FontFamily="Cascadia Mono Light">
+        Title="DataVisual Pro 0.5.0 - Main Window" Height="540" Width="930" Background="#FF84ADDA" FontFamily="Cascadia Mono Light">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -78,7 +78,26 @@
                                 </Grid>
                             </TabItem>
                             <TabItem Header="History">
-                                <Grid Background="#FFE5E5E5"/>
+                                <Grid Background="#FFE5E5E5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="115*"/>
+                                        <RowDefinition Height="115*"/>
+                                        <RowDefinition Height="115*"/>
+                                        <RowDefinition Height="117*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="History of Present Illness" VerticalAlignment="Top" Height="16" Width="218" FontFamily="Cascadia Mono Light" FontSize="14"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Previous Medical History" VerticalAlignment="Top" Height="16" Width="218" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Surgical History" VerticalAlignment="Top" Height="16" Width="218" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Family Health History" VerticalAlignment="Top" Height="16" Width="218" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3"/>
+                                    <TextBox x:Name="_IllnessHistoryBox" IsEnabled="false" Margin="10,31,56,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                                    <TextBox x:Name="_PreviousMedicalHistoryBox" IsEnabled="false" Margin="10,31,56,10" TextWrapping="Wrap" Grid.Row="1" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                                    <TextBox x:Name="_SurgicalHistoryBox" IsEnabled="false" Margin="10,31,56,10" TextWrapping="Wrap" Grid.Row="2" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                                    <TextBox x:Name="_FamilyHealthHistoryBox" IsEnabled="false" Margin="10,33,56,10" TextWrapping="Wrap" Grid.Row="3" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                                    <Button x:Name="HoPI" HorizontalAlignment="Left" Margin="847,48,0,0" VerticalAlignment="Top" Height="40" Width="41" Click="HoPI_Clicked" Background="#FFCACACA" Content="Edit"/>
+                                    <Button x:Name="PMH" HorizontalAlignment="Left" Margin="847,48,0,0" VerticalAlignment="Top" Height="40" Width="41" Grid.Row="1" Click="PMH_Clicked" Background="#FFCACACA" Content="Edit"/>
+                                    <Button x:Name="SH" HorizontalAlignment="Left" Margin="847,48,0,0" VerticalAlignment="Top" Height="40" Width="41" Grid.Row="2" Click="SH_Clicked" Background="#FFCACACA" Content="Edit"/>
+                                    <Button x:Name="FHH" HorizontalAlignment="Left" Margin="847,50,0,0" VerticalAlignment="Top" Height="40" Width="41" Grid.Row="3" Click="FHH_Clicked" Background="#FFCACACA" Content="Edit"/>
+                                </Grid>
                             </TabItem>
                         </TabControl>
                     </Grid>
@@ -90,7 +109,23 @@
                                 <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
                             </TabItem>
                             <TabItem Header="Diagnostics">
-                                <Grid Background="#FFE5E5E5"/>
+                                <Grid Background="#FFE5E5E5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="55*"/>
+                                        <RowDefinition Height="332*"/>
+                                        <RowDefinition Height="75*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image HorizontalAlignment="Left" Height="312" Margin="9,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="346" Source="/resources/images/Diagnostics.png"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Findings" VerticalAlignment="Top" Height="16" Width="68" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="10,31,0,10" Grid.Row="2" TextWrapping="Wrap" Text="A single AP view of the chest demonstrates increasing bibasilar interstitial opacities with decreased overall aeration. Increasing bibasilar atelectasis with development of bilateral pleural effusions. *** END OF REPORT ***" Width="878"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Date Ordered" VerticalAlignment="Top" Height="16" Width="104" FontFamily="Cascadia Mono Light" FontSize="14"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="10,29,0,0" TextWrapping="Wrap" Text="11/28/2023 19:45:24" VerticalAlignment="Top"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="191,10,0,0" TextWrapping="Wrap" Text="Date Resulted" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="191,29,0,0" TextWrapping="Wrap" Text="11/28/2023 20:09:24" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
+                                </Grid>
                             </TabItem>
                             <TabItem Header="Radiology">
                                 <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
@@ -117,7 +152,56 @@
                     <Grid Background="#FFE5E5E5">
                         <TabControl>
                             <TabItem Header="Vital Signs">
-                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                                <Grid Background="#FFE5E5E5" Margin="0,0,-6,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="52*"/>
+                                        <RowDefinition Height="52*"/>
+                                        <RowDefinition Height="52*"/>
+                                        <RowDefinition Height="73*"/>
+                                        <RowDefinition Height="97*"/>
+                                        <RowDefinition Height="136*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Width="33"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="111,10,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Width="33"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="202,10,0,0" TextWrapping="Wrap" Text="RN Initials" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Width="97"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="11/29/2023" VerticalAlignment="Top" Height="16" Width="82"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="111,31,0,0" TextWrapping="Wrap" Text="11:43:23" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="72"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="202,31,0,0" TextWrapping="Wrap" Text="RN" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="29"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Temperature" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1" Width="97"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="45" Grid.Row="1"/>
+                                    <ComboBox HorizontalAlignment="Left" Margin="60,29,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" SelectedIndex="0" Height="20">
+                                        <ComboBoxItem Content="F"/>
+                                        <ComboBoxItem Content="C"/>
+                                    </ComboBox>
+                                    <TextBlock HorizontalAlignment="Left" Margin="120,10,0,0" TextWrapping="Wrap" Text="Route" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="1" Width="57"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="120,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="87" Grid.Row="1" TextChanged="TextBox_TextChanged"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Heart Rate" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2" Width="90"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="112,10,0,0" TextWrapping="Wrap" Text="Method" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="2" Width="56"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="262,10,0,0" TextWrapping="Wrap" Text="Location" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Width="90" Grid.Row="2"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="82" Grid.Row="2" TextChanged="TextBox_TextChanged"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="112,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="130" Grid.Row="2"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="262,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="130" Grid.Row="2"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Respirations" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3" Width="105"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="128,10,0,0" TextWrapping="Wrap" Text="Quality" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3" Width="79"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="278,10,0,0" TextWrapping="Wrap" Text="Oxygen Device" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Width="108" Grid.Row="3"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="97" Grid.Row="3" TextChanged="TextBox_TextChanged"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="128,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="130" Grid.Row="3"/>
+                                    <RadioButton Content="Yes" HorizontalAlignment="Left" Margin="278,31,0,0" Grid.Row="3" VerticalAlignment="Top" Height="16" Width="40"/>
+                                    <RadioButton Content="No" HorizontalAlignment="Left" Margin="278,52,0,0" Grid.Row="3" VerticalAlignment="Top" Height="16" Width="33"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="414,10,0,0" TextWrapping="Wrap" Text="O2 (L/min)" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="414,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="82" Grid.Row="3"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="525,10,0,0" TextWrapping="Wrap" Text="SPO2 %" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="3" Width="49"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="525,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="82" Grid.Row="3"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="Systolic" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="4" Width="90"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="122,36,0,0" TextWrapping="Wrap" Text="Diastolic" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="4" Width="82"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="234,36,0,0" TextWrapping="Wrap" Text="Location" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Width="90" Grid.Row="4"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="90" Grid.Row="4" TextChanged="TextBox_TextChanged"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="122,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="90" Grid.Row="4"/>
+                                    <TextBox HorizontalAlignment="Left" Margin="234,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" Height="16" Width="130" Grid.Row="4"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Blood Pressure" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="4" Width="123"/>
+                                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Comments" VerticalAlignment="Top" Height="16" FontFamily="Cascadia Mono Light" FontSize="14" Grid.Row="5" Width="123"/>
+                                    <TextBox HorizontalAlignment="Right" Margin="0,31,10,10" TextWrapping="Wrap" Width="884" Grid.Row="5" TextChanged="TextBox_TextChanged"/>
+                                </Grid>
                             </TabItem>
                             <TabItem Header="Intake and Output">
                                 <Grid Background="#FFE5E5E5"/>
@@ -144,7 +228,57 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Notes">
-                    <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>
+                    <Grid Background="#FFE5E5E5" Margin="0,0,-6,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="9*"/>
+                        </Grid.ColumnDefinitions>
+                        <TreeView Name="NoteTree">
+                            <TreeViewItem Header="SOAP Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Progress Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Admission Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Discharge Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Operative Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Labratory Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Radiology Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Consultation Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Procedure Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Nursing Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Psychaiatric Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Rehabilitation Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Emergency Department Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Allergy and Medication Notes">
+                                <TreeViewItem Header="Sample Note"/>
+                            </TreeViewItem>
+                        </TreeView>
+                        <TextBox Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Sample Note" VerticalAlignment="Top" Width="610" Height="468" Margin="0,10,0,0" TextChanged="TextBox_TextChanged"/>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="Orders">
                     <Grid Background="#FFE5E5E5" Margin="0,0,-6,0"/>

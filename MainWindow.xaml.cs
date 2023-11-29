@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Newtonsoft.Json.Bson;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -227,6 +228,26 @@ namespace DataVisual_Pro
                 _CheckBox5.IsChecked = false;
                 _CheckBox6.IsChecked = false;
             }
+        }
+
+        private void HoPI_Clicked(object sender, RoutedEventArgs e)
+        {
+            _IllnessHistoryBox.IsEnabled = !_IllnessHistoryBox.IsEnabled;
+        }
+
+        private void PMH_Clicked(object sender, RoutedEventArgs e)
+        {
+            _PreviousMedicalHistoryBox.IsEnabled = !_PreviousMedicalHistoryBox.IsEnabled;
+        }
+
+        private void SH_Clicked(object sender, RoutedEventArgs e)
+        {
+            _SurgicalHistoryBox.IsEnabled = !_SurgicalHistoryBox.IsEnabled;
+        }
+
+        private void FHH_Clicked(object sender, RoutedEventArgs e)
+        {
+            _FamilyHealthHistoryBox.IsEnabled = !_FamilyHealthHistoryBox.IsEnabled;
         }
     }
 }
